@@ -1,21 +1,51 @@
 {{! This adds the HTML head section and the beginning of the body. See content_top.hbs. }}
 {{> content_top }}
 
-<div class="col-md-8">
-    <article class="blog-post">
-        {{#with page.head}}
-        <h1 class="blog-post-title border-bottom">{{title}}</h2>
-            <p class="blog-post-meta">{{#if extra.date}}Published: {{extra.date}}{{/if}}</p>
-            {{/with}}
-            {{! Since this is HTML, we use the triple-curly }}
-            {{{page.body}}}
-            {{! Remove the `!` on the line below to see how to call a Rhai script }}
-            {{! echo "world" }}
-    </article>
-</div><!-- end col -->
+<dyte-logo logo-url="https://emberjs.com/images/brand/ember-4c.svg" style="height: 36px"></dyte-logo>
 
-{{! This adds the sidebar }}
-{{> content_sidebar }}
+<dyte-setup-screen id="dyte-el" style="height: 360px"></dyte-setup-screen>
+
+
+
+<script>
+  const el = document.getElementById('dyte-el');
+  el.addEventListener('dyteChange', (e) => {
+    alert('New switch value:', e.detail);
+  });
+</script>
+
+<script>
+  const el = document.getElementById('dyte-el');
+  el.meeting = meeting;
+</script>
+
+<script>
+  const el = document.getElementById('el');
+  el.participant = meeting.self;
+</script>
+  <dyte-meeting id="my-meeting"></dyte-meeting>
+  <dyte-grid id="my-grid"></dyte-grid>
+
+
+  <script>
+    const init = async () => {
+      const meeting = await DyteClient.init({
+        authToken: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRkNzE1YjFmLTJjOTQtNDVhZi05ZWQxLTI0OWFjODg3OTUzYSIsImxvZ2dlZEluIjp0cnVlLCJpYXQiOjE2NjkwNDU1NTYsImV4cCI6MTY3NzY4NTU1Nn0.q7TNN9YMla_Wxtg_YkJhBx_Z20dGdcEqaTOk0YrDgRL_XKRKWki4I4O1KwqKVGYlQvzlDw6DgUDrqeBLvsn3WN_X8WK4YE0aMaT3xlpOQtErhQkshYlS8PVnNnzD9dEoFoYOt6XHCgjCDw-Jp4PFsCUD4oq_vMqzN4RWT3EHu5cjvTtibBR89y3N_Qv-FQf75kss8Jn9YF-HxPq1APpdB2YQHo8nyABELlfxQZNcN-n7h76vWdpRSM9hWMMaPAfbMN_e5adjXVXG-bA0RASh5IWb5kTm9CuOaU5LA_udxiW7IKq0InQc38jUvqIiB87ELIdKJOZLKcATvk47ZF1aQw',
+        roomName: 'himlfv-biveuu',
+        defaults: {
+          audio: true,
+          video: true,
+        },
+      });
+
+      document.getElementById('my-meeting').meeting = meeting;
+        document.getElementById('my-grid').meeting = meeting;
+
+    };
+
+    init();
+    
+  </script>
 
 {{! This closes the body. See content_bottom.hbs. }}
 {{> content_bottom }}

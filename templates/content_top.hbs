@@ -16,6 +16,21 @@
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
 
+  <script type="module">
+    import { defineCustomElements } from 'https://cdn.jsdelivr.net/npm/@dytesdk/ui-kit/loader/index.es2017.js';
+    defineCustomElements();
+  </script>
+  <!-- Import Web Core via CDN too -->
+  <script src="https://cdn.dyte.in/core/dyte.js"></script>
+  
+   <script type="module">
+    import {
+      provideDyteDesignSystem,
+      extendConfig,
+    } from 'https://cdn.jsdelivr.net/npm/@dytesdk/ui-kit@1.15.1/dist/index.js';
+  </script>
+  
+
     <style>
         /* pretend we have some style */
         body {
@@ -31,10 +46,28 @@
             margin-top: 2em;
         }
     </style>
+      <script type="module">
+    import { defineCustomElements } from 'https://cdn.jsdelivr.net/npm/@dytesdk/ui-kit/loader/index.es2017.js';
+    defineCustomElements();
+  </script>
+  <!-- Import Web Core via CDN too -->
+  <script src="https://cdn.dyte.in/core/dyte.js"></script>
+  
+   <script type="module">
+    import {
+      provideDyteDesignSystem,
+      extendConfig,
+    } from 'https://cdn.jsdelivr.net/npm/@dytesdk/ui-kit@1.15.1/dist/index.js';
+  </script>
+  
 </head>
 
 <body>
-    <div class="container" id="main-container">
-        {{> navbar }}
-        <main>
-            <div class="row">
+
+
+<div id="dyte-el" style="height: 360px"></div>
+
+<script>
+  const el = document.getElementById('dyte-el');
+  el.meeting = meeting;
+</script>
